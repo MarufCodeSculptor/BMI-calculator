@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="image/favicon.png" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI_generetor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <!-- nonserat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!-- google font ended here -->
+
+<style>
+    .bellefair{
+  font-family: "Bellefair",'sans-serif';
+    }
+    .monserat{
+      font-family: "Montserrat", sans-serif;
+    }
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+    
+    
+</style>
+</head>
+<body class="bellefair">
+  
+
+
+
+<div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
+      <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+    </div>
+    <div class="mx-auto max-w-2xl text-center style-single-day">
+      <h2 class="text-3xl font-bold tracking-tight text-blue-500 sm:text-4xl">Quantum <span class="text-pink-600">Wellness</span></h2>
+      <p class="mt-2 text-lg leading-8 text-gray-900">Join our BMI Explorer as we go beyond mere numbers, guiding you through a comprehensive exploration of wellness. Understand your body on a profound level for lasting health</p>
+    </div>
+    
+    <section class="max-w-2xl mx-auto my-20 monserat font-semibold">
+      <h4 class="text-3xl capitalize ">
+        your <span class="uppercase font-bold">bmi</span> <span class="lowercase">is</span>   <span id="bmi-field" class="ms-10 text-purple-950 font-extrabold text-4xl"> 30</span>  </h4>
+        <p class="my-4 shadow-xl min-h-20 p-5 sm:p-10 rounded-xl capitalize" id="user-message"> Your helth is very good </p>
+    </section>
+    
+  
+    
+
+    <section  class="mx-auto mt-16 max-w-xl sm:mt-20">
+
+      <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+       <!-------------------------The Height Weight input tags.-------------------- -->
+        <div class="sm:col-span-2">
+          <label for="weight" class="block text-xl font-semibold leading-6 text-blue-900">Weight__ <span class="text-sm"> the value will  count as <span class="text-xs">KG</span> </span>  </label>
+          <div class="mt-2.5">
+            <input placeholder="plese input your Weight in kg " type="number" name="weight" id="weight"  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="height" class="block text-xl font-semibold leading-6 text-blue-900">Height__<span class="text-sm"> the value will  count as meter </span></label>
+          <div class="mt-2.5">
+            <input placeholder="please input your height in meter"  type="number" name="height" id="height"  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+       
+      
+      
+      </div>
+
+
+
+
+
+      <div class="mt-10">
+        <button  id="submitButton" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-2xl font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Generate</button>
+      </div>
+    </section>
+
+
+  </div>
+  
+
+
+
+
+
+
+  <script>
+    const weightElement=document.getElementById('weight');
+    const heightElement=document.getElementById('height');
+    const bmiInputElement=document.getElementById('bmi-field');
+    bmiInputElement.innerHTML='not generated'
+    let bmi='0'
+    const userMessageElement=document.getElementById('user-message');
+    
+    
+    function bmiGeneratro(){
+      const height=heightElement.value;
+      const weight=weightElement.value;
+      console.log( 'height is -', height,'weight is-', weight);
+
+      const squaredheight=height*height;
+      console.log('squerheight is:-',squaredheight);
+      const bmiIs=weight/squaredheight;
+      bmi=bmiIs
+      bmiInputElement.innerHTML=bmi.toFixed(1);
+      if(bmi<18.5){
+        userMessageElement.innerHTML="You are ungerweight";
+      }
+      else{
+        if(bmi>=18.5 && bmi<=24.9){
+          userMessageElement.innerHTML="You are perfect mr.";
+          
+        }
+        else{
+          if(bmi>=25 && bmi<=29.9){
+            userMessageElement.innerHTML="You are so fat sir !";
+            
+          }
+          else{
+            userMessageElement.innerHTML="You are so dump you need treatment sir !";
+
+          }
+        }
+      }
+
+    }
+
+    document.getElementById('submitButton').addEventListener('click',bmiGeneratro)
+    
+
+
+
+
+
+
+
+   
+
+
+  </script>
+</body>
+
+
+
+
+</html>
